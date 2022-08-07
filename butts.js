@@ -1,7 +1,3 @@
-;(condition && truthValue) || falseValue
+console.log(14 % 3)
 
-const butts = function (item) {
-  return (item === "butts" && true) || false
-}
-
-console.log(butts("butts"))
+difference / layers --> odd or even
