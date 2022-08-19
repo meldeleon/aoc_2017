@@ -2,7 +2,6 @@ let input = require("fs")
   .readFileSync("day03_input.txt")
   .toString()
   .split(/\r?\n/)
-console.log(input)
 
 function mapSquares(n) {
   let upperBounds = []
@@ -13,10 +12,8 @@ function mapSquares(n) {
 }
 
 let squares = mapSquares(1000)
-//console.log(squares)
 
 function findLayer(arr, n) {
-  //pass arr as list of squares, n is the number for which we are trying to find the layer
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] >= n) {
       return i
@@ -24,9 +21,30 @@ function findLayer(arr, n) {
   }
 }
 
-function findDistance(n) {
-  let layer = findLayer(squares, n)
-  let maxLayerValue = squares[layer]
-  let diff = maxLayerValue - n + 1
-  let
+function mapLayer(arr, n) {
+  let layer = findLayer(arr, n)
+  let numberOfDigits = layer * 8
+  let eigthDigits = numberOfDigits / 8
+  let sequence = []
+  for (let i = layer; i <= layer + eigthDigits; i++) {
+    sequence.push(i)
+  }
+  for (let j = layer + eigthDigits - 1; j > layer; j--) {
+    sequence.push(j)
+  }
+  let mappedLayer = []
+  for (let k = 0; k < 4; k++) {
+    mappedLayer.push(sequence)
+  }
+  return mappedLayer.flat()
 }
+
+function findDistance(arr, n) {
+  let mappedLayer = mapLayer(arr, n)
+  let layer = findLayer(arr, n)
+  let layer0IndexNum = Math.pow((layer - 1) * 2 + 1, 2) + layer
+  let diff = n - layer0IndexNum
+  return mappedLayer[diff]
+}
+let test = findDistance(squares, 368078)
+console.log(test)
