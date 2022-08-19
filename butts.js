@@ -1,30 +1,12 @@
-console.log(Math.sqrt(931.82124))
-//layer, index
-[1]1,0// n-1
-[1]1,1// n-1 + n-2
-[2]1,2// n-1 + n-2 + n-3
-[4]1,3// n-1 + n-3
-[5]1,4// n-1 + n-2 + n-5
-[10]1,5// n-1 + n-6
-[11]1,6// n-1 + n-2, n-6, n-7
-[23]1,7// n-1 + n-9
-[25]1,8// n-1 + n-7 + n-8
-[26]2,1// n-1, n-8
-[54]2,2// n-1 + n-2, n-8, n-9
-[57]2,3// n-1 + n-9, n-10
-[59]2,4// n-1 + n-10
-[122]2,5// n-1 + n-2 + n-10 + n-11
-[133]2,6// n-1 + n-10 + n-11, n-12
-[142]2,7// n-1 + n-11 + n-12
-[147]2,8// n-1 + n-12
-[304]2,9// n-1 + n-2 + n-12, n-13
+let test = isAnagram("aaa", "aaa")
+console.log(test)
 
-[{
-  coord: [0,0],
-  val: 1
-},
-{
-  coord:[1,0],
-  val: 1
-
-}]
+function isAnagram(str1, str2) {
+  let arr1 = str1.split("").sort()
+  let arr2 = str2.split("").sort()
+  if (arr1.join("") === arr2.join("")) {
+    return true
+  } else {
+    return false
+  }
+}
