@@ -5,28 +5,14 @@ const input = require("fs")
 
 let passCount = 0
 input.forEach((passphrase) => {
-  let chunkedPhrase = passphrase.split(" ")
-  chunkedPhrase.map((word, index) => {
-    for (let i = 0; i < chunkedPhrase.length; i++) {
-      if (i === index) {
-        // do not compare with itself
-      } else {
-        if (isAnagram(word, chunkedPhrase[i])) {
-          return false
-          break
-        }
-      }
-    }
+  let sortedChunkedPhrase = passphrase.split(" ").map((chunk) => {
+    return chunk.split("").sort().join("")
   })
+  console.log(sortedChunkedPhrase)
+  let setChunkedPhrase = new Set(sortedChunkedPhrase)
+  if (sortedChunkedPhrase.length === setChunkedPhrase.size) {
+    passCount++
+  }
 })
 
 console.log(passCount)
-function isAnagram(str1, str2) {
-  let arr1 = str1.split("").sort()
-  let arr2 = str2.split("").sort()
-  if (arr1.join("") === arr2.join("")) {
-    return true
-  } else {
-    return false
-  }
-}
