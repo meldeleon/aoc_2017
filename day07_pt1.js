@@ -49,3 +49,4 @@ for (const program in tower) {
 }
 
 console.log({ answer })
+console.log({ tower })
