@@ -1,3 +1,4 @@
+let max = 0
 // creating functions that allows us to turn a string compartor into and evaluative comparison statement, returns t/f
 const executeComparator = {
   ">": function (x, y) {
@@ -57,6 +58,9 @@ for (const line of instructions) {
     } else {
       registers[line.register] = registerValue - line.delta
     }
+    if (registers[line.register] > max) {
+      max = registers[line.register]
+    }
     //console.log(`executing ${line.register} ${line.operator} ${line.delta}`)
   }
 }
@@ -68,7 +72,7 @@ valuesOfRegisters.sort((a, b) => b - a)
 //console.log({ registers })
 //console.log({ valuesOfRegisters })
 
-console.log(`the answer is ${valuesOfRegisters[0]}`)
+console.log(`the answer is ${max}`)
 function returnRegisterValue(regName, registersObj) {
   if (registersObj.hasOwnProperty(regName)) {
     /*console.log(
@@ -77,7 +81,7 @@ function returnRegisterValue(regName, registersObj) {
   } else {
     registersObj[regName] = 0
     //console.log(`register does not exist, creating register ${regName}`)
-    s //console.log({ registers })
+    //console.log({ registers })
   }
   return registersObj[regName]
 }
