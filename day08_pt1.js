@@ -17,7 +17,7 @@ const executeComparator = {
     return x === y
   },
   "!=": function (x, y) {
-    return x != y
+    return x !== y
   },
 }
 //parsing the input given by the puzzle into an array with an item for each line
@@ -37,8 +37,6 @@ const instructions = input.map((line) => {
     conditionComparee: parseInt(splitLine[6]),
   }
 })
-console.log(instructions.length)
-//console.log(instructions)
 // creating an empty object to track registers
 let registers = {}
 //going through each instruction line and executing
@@ -55,7 +53,11 @@ for (const line of instructions) {
   )
   if (conditionMet) {
     let registerValue = returnRegisterValue(line.register, registers)
-    registers[line.register] = registerValue + line.delta
+    if (line.operator === "inc") {
+      registers[line.register] = registerValue + line.delta
+    } else {
+      registers[line.register] = registerValue - line.delta
+    }
     console.log(`executing ${line.register} ${line.operator} ${line.delta}`)
   }
 }
@@ -82,4 +84,4 @@ function returnRegisterValue(regName, registersObj) {
   return registersObj[regName]
 }
 
-console.log(countRegisterCreation, valuesOfRegisters.length)
+//console.log(countRegisterCreation, valuesOfRegisters.length)
