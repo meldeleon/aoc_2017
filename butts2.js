@@ -1,12 +1,18 @@
-let test = { ugml: 251, padx: 243, fwft: 243 }
-
-function checkIfEqual(obj) {
-  let arr = []
-  for (const property in obj) {
-    arr.push(obj[property])
+function returnRegisterValue(register, registers) {
+  if (registers[register]) {
+  } else {
+    registers[register] = 0
   }
-  console.log(arr)
-  return arr.every((weight) => arr[0] === weight)
+  return registers[register]
 }
 
-console.log(checkIfEqual(test))
+registers = {
+  a: 2,
+  b: 1,
+}
+
+if (returnRegisterValue("c", registers)) {
+  console.log("truthy")
+} else {
+  console.log("falsy")
+}

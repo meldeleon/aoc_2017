@@ -57,19 +57,18 @@ for (const program in tower) {
 let discrepancy = true
 let previousNeighbors
 while (discrepancy) {
-  console.log("while loop top")
-  console.log({ currentNode })
+  //console.log("while loop top")
+  //console.log({ currentNode })
   let children = getChildren(currentNode, tower)
-  console.log({ children })
+  //console.log({ children })
   let childrenCumWeights = children.map((child) => {
     return tower[child].cumWeight
   })
-  console.log({ childrenCumWeights })
+  //console.log({ childrenCumWeights })
   let discrepantIndex = returnIndexOfOutlier(childrenCumWeights)
-  console.log({ discrepantIndex })
+  //console.log({ discrepantIndex })
   if (discrepantIndex === undefined) {
     discrepancy = false
-    console.log("no discrepancy found")
     console.log(
       `the discrepant node is ${currentNode}, it's individual weight is ${
         tower[currentNode].weight
