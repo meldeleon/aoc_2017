@@ -1,4 +1,4 @@
-//convert input into an int arr
+n //convert input into an int arr
 const input = require("fs")
   .readFileSync("day10_input.txt")
   .toString()
