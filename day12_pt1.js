@@ -23,13 +23,14 @@ for (let i = 0; i < input.length; i++) {
     }
   }
 }
-// console.log(graph)
+console.log({ graph })
 
 const programPrompt = 0
 const answerArray = []
 const checked = []
 
 let stack = [...graph[programPrompt]]
+console.log({ stack })
 while (stack.length > 0) {
   // console.log({ stack })
   // console.log({ answerArray })
